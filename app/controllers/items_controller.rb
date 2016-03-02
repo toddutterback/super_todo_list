@@ -32,7 +32,7 @@ before_action :item, only: [:show, :edit, :update, :delete]
     #Put - Update record in database
     # @person = Person.find(params[:id])
     @item.update(item_params)
-    redirect_to person_path(@person)
+    redirect_to list_path(@list)
   end
 
   def destroy
@@ -48,13 +48,14 @@ before_action :item, only: [:show, :edit, :update, :delete]
   end
 
   private 
-  def item_params
-    params.require(:item).permit(:title, :priority, :complete)
-  end
+    
+    def item_params
+      params.require(:item).permit(:title, :priority, :complete)
+    end
 
-  def person
-    @item = Item.find(params[:id])
-  end
+    def person
+      @item = Item.find(params[:id])
+    end
 
 
 end
